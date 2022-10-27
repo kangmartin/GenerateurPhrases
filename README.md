@@ -1,2 +1,2 @@
 # GenerateurPhrases
-Générateur automatique de phrases grammaticalement correcte en langage C
+Générateur automatique de phrases grammaticalements correcte en langage C
