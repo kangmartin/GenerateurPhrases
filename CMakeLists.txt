@@ -4,4 +4,4 @@ project(GenerateurPhrases C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(GenerateurPhrases
-        main.c)
+        main.c fonctions.c fonctions.h)
