@@ -8,4 +8,15 @@
 void menu(void);
 void extraction_fichier();
 
+typedef struct Tree
+{
+    char value;
+    struct Tree* tleft;
+    struct Tree* tright;
+    struct Tree* parent;
+}Tree;
+
+Tree *new_tree(char x);
+void clean_tree(Tree *tr);
+
 #endif //GENERATEURPHRASES_FONCTIONS_H

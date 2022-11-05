@@ -74,7 +74,7 @@ void extraction_fichier()
     {
         exit(2);
     }
-    printf("La memoire a bien ete allouee !");
+    printf("La memoire a bien ete allouee !\n");
 
 
 
@@ -82,7 +82,6 @@ void extraction_fichier()
     {
         fscanf(fic2, "%s\t%s\t%s",&forme_flechie,&forme_base,&categorie);
         strcpy(&tableau_forme_base[i],forme_base);
-        printf("%s\n",&tableau_forme_base[i]);
     }
 
     free(tableau_forme_base);
@@ -90,6 +89,35 @@ void extraction_fichier()
 
 }
 
+Tree *new_tree(char x)
+{
+    Tree *tr = malloc(sizeof (*tr));
+    if(tr == NULL)
+    {
+        exit(1);
+    }
+
+    tr->value = x;
+    tr->tleft = NULL;
+    tr->tright = NULL;
+    tr->parent = NULL;
+
+    printf("Creation de %c\n",tr->value);
+    return tr;
+
+}
+
+void clean_tree(Tree *tr)
+{
+    if(tr == NULL)
+    {
+        return;
+    }
+    printf("Supression de %d\n",tr->value);
+    clean_tree(tr->tleft);
+    clean_tree(tr->tright);
+    free(tr);
+}
 
 
 
