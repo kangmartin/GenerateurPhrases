@@ -3,6 +3,8 @@
 
 int main(void)
 {
-    menu();
+// Debut du developpement
+    // menu();
+    extraction_fichier();
     return 0;
 }
