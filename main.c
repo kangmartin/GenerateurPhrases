@@ -4,6 +4,7 @@
 int main(void)
 {
 // Debut du developpement
-    menu();
+    // menu();
+    extraction_fichier();
     return 0;
 }
