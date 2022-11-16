@@ -5,18 +5,11 @@
 #ifndef GENERATEURPHRASES_FONCTIONS_H
 #define GENERATEURPHRASES_FONCTIONS_H
 
-void menu(void);
-void extraction_fichier();
+void menu();
+void lire_fichier_nom();
+void lire_fichier_adverbe();
+void lire_fichier_verbe();
+void lire_fichier_adjectif();
 
-typedef struct Tree
-{
-    char value;
-    struct Tree* tleft;
-    struct Tree* tright;
-    struct Tree* parent;
-}Tree;
-
-Tree *new_tree(char x);
-void clean_tree(Tree *tr);
 
 #endif //GENERATEURPHRASES_FONCTIONS_H

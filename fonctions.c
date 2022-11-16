@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+
 void menu(void)
 {
     int selection;
@@ -17,20 +19,23 @@ void menu(void)
            " | |_| | | (__| |_| | (_) | | | | | | | (_| | |  | |_| |  | |  | | (_| | | | |\n"
            " |____/|_|\\___|\\__|_|\\___/|_| |_|_| |_|\\__,_|_|   \\__, |  |_|  |_|\\__,_|_| |_|\n"
            "                                                  |___/                       ");
-    printf("\n=======================================================================================\n1. Lancer le programme\n2. xxxx\n3. xxxx\n=======================================================================================");
+    printf("\n=======================================================================================\n1. Afficher les adverbes\n2. Afficher les adjectifs\n3. Afficher les verbes\n4. Afficher les noms\n(le reste des fonctionnalites sont en cours de dev.)\n=======================================================================================");
     printf("\nVotre choix:");
     scanf("%d",&selection);
     if(selection == 1 || selection == 2 || selection==3)
     {
         switch (selection) {
             case 1:
-                printf("Vous etes dans le programme 1");
+                lire_fichier_adverbe();
                 break;
             case 2:
-                printf("Vous etes dans le programme 2");
+                lire_fichier_adjectif();
                 break;
             case 3:
-                printf("Vous etes dans le programme 3");
+                lire_fichier_verbe();
+                break;
+            case 4:
+                lire_fichier_nom();
                 break;
         }
 
@@ -40,84 +45,135 @@ void menu(void)
     }
 }
 
-void extraction_fichier()
+void lire_fichier_adjectif()
 {
-    char forme_base[255];
-    char forme_flechie[255];
-    char categorie[255];
-    int nombre_ligne = 0;
-    char *tableau_forme_base = NULL;
-    char ligne_texte[255];
+    FILE *fichier = fopen("../dictionnaire.txt", "r");
+
+    char formeFlechie[256];
+    char formeDeBase[256];
+    char categorie[256];
 
 
-    FILE *fic = fopen("../dictionnaire.txt","r");
-    if(fic == NULL)
-    {
-        printf("Le fichier n'a pas ete lu !\n");
-        exit(1);
-
-    }
-    printf("Le fichier a bien ete lu !\n");
-
-
-
-    while(fgets(ligne_texte,255,fic) != NULL)
-    {
-        nombre_ligne++;
-    }
-    fclose(fic);
-
-    FILE *fic2 = fopen("../dictionnaire.txt","r");
-    tableau_forme_base = malloc(nombre_ligne * sizeof(char));
-
-    if(tableau_forme_base == NULL)
-    {
-        exit(2);
-    }
-    printf("La memoire a bien ete allouee !\n");
-
-
-
-    for(int i=0;i<nombre_ligne;i++)
-    {
-        fscanf(fic2, "%s\t%s\t%s",&forme_flechie,&forme_base,&categorie);
-        strcpy(&tableau_forme_base[i],forme_base);
-    }
-
-    free(tableau_forme_base);
-    fclose(fic2);
-
-}
-
-Tree *new_tree(char x)
-{
-    Tree *tr = malloc(sizeof (*tr));
-    if(tr == NULL)
+    if(fichier == NULL)
     {
         exit(1);
     }
-
-    tr->value = x;
-    tr->tleft = NULL;
-    tr->tright = NULL;
-    tr->parent = NULL;
-
-    printf("Creation de %c\n",tr->value);
-    return tr;
-
-}
-
-void clean_tree(Tree *tr)
-{
-    if(tr == NULL)
+    while(fscanf(fichier, "%s\t%s\t%s", formeFlechie, formeDeBase, categorie) != EOF)
     {
-        return;
+
+        if(categorie[0]+categorie[1]+categorie[2] == 'A'+'d'+'j')
+        {
+            printf("Forme de base: %s\n",formeDeBase);
+
+
+
+        }
+
+
     }
-    printf("Supression de %d\n",tr->value);
-    clean_tree(tr->tleft);
-    clean_tree(tr->tright);
-    free(tr);
+
+    fclose(fichier);
 }
+
+
+void lire_fichier_nom()
+{
+    FILE *fichier = fopen("../dictionnaire.txt", "r");
+
+    char formeFlechie[256];
+    char formeDeBase[256];
+    char categorie[256];
+
+
+    if(fichier == NULL)
+    {
+        exit(1);
+    }
+    while(fscanf(fichier, "%s\t%s\t%s", formeFlechie, formeDeBase, categorie) != EOF)
+    {
+
+
+            if(categorie[0]+categorie[1]+categorie[2] == 'N'+'o'+'m')
+            {
+                printf("Forme de base: %s\n",formeDeBase);
+
+
+
+            }
+
+
+    }
+
+    fclose(fichier);
+}
+
+void lire_fichier_verbe()
+{
+    FILE *fichier = fopen("../dictionnaire.txt", "r");
+
+    char formeFlechie[256];
+    char formeDeBase[256];
+    char categorie[256];
+
+
+    if(fichier == NULL)
+    {
+        exit(1);
+    }
+    while(fscanf(fichier, "%s\t%s\t%s", formeFlechie, formeDeBase, categorie) != EOF)
+    {
+
+
+            if( categorie[0]+categorie[1]+categorie[2] == 'V'+'e'+'r')
+            {
+                printf("Forme de base: %s\n",formeDeBase);
+
+
+
+            }
+
+
+    }
+
+    fclose(fichier);
+}
+
+void lire_fichier_adverbe()
+{
+    FILE *fichier = fopen("../dictionnaire.txt", "r");
+
+    char formeFlechie[256];
+    char formeDeBase[256];
+    char categorie[256];
+
+
+    if(fichier == NULL)
+    {
+        exit(1);
+    }
+    while(fscanf(fichier, "%s\t%s\t%s", formeFlechie, formeDeBase, categorie) != EOF)
+    {
+
+
+            if(categorie[0]+categorie[1]+categorie[2] == 'A'+'d'+'v')
+
+
+            {
+                printf("Forme de base: %s\n",formeDeBase);
+
+
+
+            }
+
+
+    }
+
+    fclose(fichier);
+}
+
+
+
+
 
 
 
