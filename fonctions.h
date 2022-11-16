@@ -5,7 +5,11 @@
 #ifndef GENERATEURPHRASES_FONCTIONS_H
 #define GENERATEURPHRASES_FONCTIONS_H
 
-void menu(void);
-void extraction_fichier();
+void menu();
+void lire_fichier_nom();
+void lire_fichier_adverbe();
+void lire_fichier_verbe();
+void lire_fichier_adjectif();
+
 
 #endif //GENERATEURPHRASES_FONCTIONS_H

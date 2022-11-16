@@ -1,10 +1,14 @@
 #include <stdio.h>
 #include "fonctions.h"
+#include <stdlib.h>
+#include <string.h>
+
 
 int main(void)
 {
-// Debut du developpement
-    // menu();
-    extraction_fichier();
-    return 0;
+
+    menu();
+
+
 }
+
