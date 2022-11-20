@@ -10,22 +10,6 @@
 #define SUCCESS 1
 #define ERROR 0
 
-/*
-void displayTree(p_letter_node root){
-
-    if(root->sons.head!=NULL){
-        printf("\n|");
-        printf("%s",root->letter);
-        displayTree((p_letter_node) root->sons.head->sons);
-    }
-    if(root->sons.head->next!=NULL){
-        printf("--");
-        p_letter_node tmp= root->sons.head->sons;
-        printf("%s",tmp->letter);
-        displayTree((p_letter_node) root->sons.head->next);
-    }
-}
- */
 
 nAryTree createEmptyTree(){
     nAryTree tree;
@@ -37,7 +21,6 @@ nAryTree createEmptyTree(){
 
 int isEmptyNAry(nAryTree tree){
     if(tree.root == NULL){
-        //printf("test");
         return 1;
     }
     return 0;
@@ -59,21 +42,6 @@ void addNode(nAryTree* tree,p_letter_node pn, char letter){
         pn = new_pn ;
     }
 }
-
-/*
-p_letter_node addNodeTree(char word, p_letter_node current_node){
-    if(current_node->letter == word){
-        current_node = createNode(word);
-        current_node = current_node->sons.head->sibling->child;
-        return current_node;
-    }
-    else{
-        current_node = createNode(word);
-        current_node = current_node->sons.head->child;
-        return current_node;
-    }
-}
- */
 
 void createTree(char* word,nAryTree *tree) {
 
