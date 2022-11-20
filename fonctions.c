@@ -9,20 +9,14 @@
 
 
 
-void menu(void)
+void menu(void) // le menu
 {
     int selection;
-    printf("\n"
-           "  ____  _      _   _                                       __  __             \n"
-           " |  _ \\(_) ___| |_(_) ___  _ __  _ __   __ _ _ __ _   _   |  \\/  | __ _ _ __  \n"
-           " | | | | |/ __| __| |/ _ \\| '_ \\| '_ \\ / _` | '__| | | |  | |\\/| |/ _` | '_ \\ \n"
-           " | |_| | | (__| |_| | (_) | | | | | | | (_| | |  | |_| |  | |  | | (_| | | | |\n"
-           " |____/|_|\\___|\\__|_|\\___/|_| |_|_| |_|\\__,_|_|   \\__, |  |_|  |_|\\__,_|_| |_|\n"
-           "                                                  |___/                       ");
-    printf("\n=======================================================================================\n1. Afficher les adverbes\n2. Afficher les adjectifs\n3. Afficher les verbes\n4. Afficher les noms\n(le reste des fonctionnalites sont en cours de dev.)\n=======================================================================================");
+    printf("\nQuel voulez-vous choisir ?\n");
+    printf("\n=======================================================================================\n1. Afficher les adverbes\n2. Afficher les adjectifs\n3. Afficher les verbes\n4. Afficher les noms\n5. Affichage d'une phrase\n=======================================================================================");
     printf("\nVotre choix:");
     scanf("%d",&selection);
-    if(selection == 1 || selection == 2 || selection==3)
+    if(selection == 1 || selection == 2 || selection==3 || selection==4)
     {
         switch (selection) {
             case 1:
@@ -37,6 +31,8 @@ void menu(void)
             case 4:
                 lire_fichier_nom();
                 break;
+            default:
+                printf("Erreur");
         }
 
     }
@@ -45,7 +41,7 @@ void menu(void)
     }
 }
 
-void lire_fichier_adjectif()
+void lire_fichier_adjectif() //fonction qui extrait que les adjectif et qui les affiche
 {
     FILE *fichier = fopen("../dictionnaire.txt", "r");
 
@@ -97,8 +93,6 @@ void lire_fichier_nom()
             {
                 printf("Forme de base: %s\n",formeDeBase);
 
-
-
             }
 
 
@@ -120,6 +114,7 @@ void lire_fichier_verbe()
     {
         exit(1);
     }
+
     while(fscanf(fichier, "%s\t%s\t%s", formeFlechie, formeDeBase, categorie) != EOF)
     {
 
@@ -154,25 +149,16 @@ void lire_fichier_adverbe()
     while(fscanf(fichier, "%s\t%s\t%s", formeFlechie, formeDeBase, categorie) != EOF)
     {
 
-
             if(categorie[0]+categorie[1]+categorie[2] == 'A'+'d'+'v')
-
 
             {
                 printf("Forme de base: %s\n",formeDeBase);
-
-
-
             }
-
 
     }
 
     fclose(fichier);
 }
-
-
-
 
 
 

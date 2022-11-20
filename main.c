@@ -7,7 +7,7 @@
 int main(void)
 {
 
-    menu();
+    menu(); //affichage du menu
 
 
 }

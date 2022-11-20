@@ -3,34 +3,14 @@
 //
 
 #include <stdlib.h>
-#include <time.h>
 #include <stdio.h>
 #include <string.h>
 #include "arbres.h"
-#define SUCCESS 1
-#define ERROR 0
 
-/*
-void displayTree(p_letter_node root){
-
-    if(root->sons.head!=NULL){
-        printf("\n|");
-        printf("%s",root->letter);
-        displayTree((p_letter_node) root->sons.head->sons);
-    }
-    if(root->sons.head->next!=NULL){
-        printf("--");
-        p_letter_node tmp= root->sons.head->sons;
-        printf("%s",tmp->letter);
-        displayTree((p_letter_node) root->sons.head->next);
-    }
-}
- */
 
 nAryTree createEmptyTree(){
     nAryTree tree;
     tree.root = NULL;
-    //tree.root->sons->head = NULL;
     return tree;
 }
 
@@ -43,37 +23,8 @@ int isEmptyNAry(nAryTree tree){
     return 0;
 }
 
-p_letter_node createNode(char word){
-    p_letter_node pn;
-    pn = (p_letter_node)malloc(sizeof(t_letter_node));
-    pn->letter = word;
-    pn->child = NULL;
-    pn->sibling = NULL;
-    return pn;
-}
 
-void addNode(nAryTree* tree,p_letter_node pn, char letter){
-    p_letter_node new_pn;
-    new_pn = createNode(letter);
-    if (isEmptyNAry(*tree)){
-        pn = new_pn ;
-    }
-}
 
-/*
-p_letter_node addNodeTree(char word, p_letter_node current_node){
-    if(current_node->letter == word){
-        current_node = createNode(word);
-        current_node = current_node->sons.head->sibling->child;
-        return current_node;
-    }
-    else{
-        current_node = createNode(word);
-        current_node = current_node->sons.head->child;
-        return current_node;
-    }
-}
- */
 
 void createTree(char* word,nAryTree *tree) {
 
@@ -90,7 +41,6 @@ void createTree(char* word,nAryTree *tree) {
 
             }
             tmp = pn_new;
-            //printf("%c\n", tmp->letter);
             pn->child = tmp;
             pn = pn->child;
 
@@ -111,7 +61,6 @@ void createTree(char* word,nAryTree *tree) {
                 tmp = pn_new;
                 root->sibling = tmp;
                 root = root->sibling;
-                //printf("%c\n", tmp->letter);
 
             }else{
 
@@ -126,11 +75,18 @@ void createTree(char* word,nAryTree *tree) {
                 root = root->child;
                 printf("%c\n", tmp->letter);
             }
-
         }
-
     }
 
+}
+
+p_letter_node createNode(char word){
+    p_letter_node pn;
+    pn = (p_letter_node)malloc(sizeof(t_letter_node));
+    pn->letter = word;
+    pn->child = NULL;
+    pn->sibling = NULL;
+    return pn;
 }
 
 
